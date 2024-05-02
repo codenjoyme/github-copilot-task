@@ -1,0 +1,17 @@
+version: '3.5'
+
+services:
+  db:
+    container_name: blog-postgres-db
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: blog
+      POSTGRES_PASSWORD: blog
+      POSTGRES_DB: blog
+    ports:
+      - "5432:5432"
+
+networks:
+  default:
+    name: blog

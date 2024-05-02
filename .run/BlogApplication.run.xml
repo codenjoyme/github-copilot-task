@@ -1,0 +1,25 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="BlogApplication" type="Application" factoryName="Application">
+    <envs>
+      <env name="DB_HOST" value="localhost" />
+      <env name="DB_NAME" value="blog" />
+      <env name="DB_PASSWORD" value="blog" />
+      <env name="DB_PORT" value="5432" />
+      <env name="DB_USERNAME" value="blog" />
+      <env name="DELETE_SECRET" value="12345" />
+      <env name="GIT_DIRECTORY" value="data/blog.com" />
+    </envs>
+    <option name="MAIN_CLASS_NAME" value="com.codenjoy.blog.BlogApplication" />
+    <module name="apofig-blog" />
+    <option name="VM_PARAMETERS" value="-Dspring.profiles.active=local,nocache" />
+    <extension name="coverage">
+      <pattern>
+        <option name="PATTERN" value="com.codenjoy.blog.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+    </extension>
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
