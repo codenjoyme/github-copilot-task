@@ -9,6 +9,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.io.File;
@@ -24,6 +25,7 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 @ExtendWith(SpringExtension.class)
 @Import(TestConfig.class)
 @TestPropertySource(locations="classpath:test.properties")
+@Sql(scripts = "classpath:db/clean.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
 public abstract class BaseIntegrationTest {
 
     @Value("${logs.path}")

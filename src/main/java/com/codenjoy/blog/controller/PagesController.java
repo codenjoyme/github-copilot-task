@@ -2,6 +2,7 @@ package com.codenjoy.blog.controller;
 
 
 import com.codenjoy.blog.dto.PageDTO;
+import com.codenjoy.blog.dto.PageVisitDTO;
 import com.codenjoy.blog.facade.PageFacade;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -42,6 +43,10 @@ import static org.springframework.util.MimeTypeUtils.TEXT_PLAIN_VALUE;
  *   HTTP GET    /api/pages/tags
  *      Get a list of all pages tags.
  *      @see PagesController#getAllTags()
+ *
+ *   HTTP GET    /api/pages/visits
+ *      Get a list of all pages visits.
+ *      @see PagesController#getAllVisits()
  */
 @Slf4j
 @Tag(name = "Pages API")
@@ -117,5 +122,25 @@ public class PagesController {
     @GetMapping("/pages/tags")
     public List<String> getAllTags() {
         return pages.tags();
+    }
+
+    @Operation(summary = "Get a list of all pages visits",
+            description = "Visits of all pages.",
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "OK. Visits list",
+                            content = @Content(mediaType = APPLICATION_JSON_VALUE,
+                                    examples = @ExampleObject(SAMPLE_VISITS))),
+                    @ApiResponse(
+                            responseCode = "500",
+                            description = "Internal server error",
+                            content = @Content(mediaType = TEXT_PLAIN_VALUE,
+                                    examples = @ExampleObject("Internal server error")))
+            })
+    @Order(4)
+    @GetMapping("/pages/visits")
+    public List<PageVisitDTO> getAllVisits() {
+        return pages.visits();
     }
 }

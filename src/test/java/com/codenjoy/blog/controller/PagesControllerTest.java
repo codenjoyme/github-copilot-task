@@ -95,6 +95,26 @@ public class PagesControllerTest extends BaseControllerTest {
                 fix(result));
     }
 
+    @Test
+    public void shouldGetVisits() {
+        // when
+        String result = getAllVisits();
+
+        // then
+        assertEquals(fix(SAMPLE_NO_VISITS),
+                fix(result));
+
+        // when
+        getPage(SAMPLE_PAGE_NAME);
+        getPage(SAMPLE_PAGE_NAME);
+        getPage(SAMPLE_PAGE_NAME);
+
+        // then
+        assertEquals(fix(SAMPLE_VISITS),
+                fix(getAllVisits()));
+
+    }
+
     /**
      * Bellow you can see methods that interact with the server. Please note
      * that the order of the methods and its names are same as the order of
@@ -127,6 +147,16 @@ public class PagesControllerTest extends BaseControllerTest {
     @SneakyThrows
     private String getAllTags() {
         return prettyPrint(mvc.perform(get("/api/pages/tags"))
+                .andExpect(status().isOk())
+                .andReturn().getResponse().getContentAsString());
+    }
+
+    /**
+     * @see PagesController#getAllVisits()
+     */
+    @SneakyThrows
+    private String getAllVisits() {
+        return prettyPrint(mvc.perform(get("/api/pages/visits"))
                 .andExpect(status().isOk())
                 .andReturn().getResponse().getContentAsString());
     }

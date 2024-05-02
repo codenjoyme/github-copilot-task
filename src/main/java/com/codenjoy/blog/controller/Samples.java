@@ -79,4 +79,36 @@ public class Samples {
     public static final String SECURED_KEY =
             "Secret key for admin operations, which is specified in " +
             "the application.properties file";
+
+    public static final String SAMPLE_VISITS =
+            "[\n" +
+            "  {\n" +
+            "    'fileName': '2008-06-25_15-30-00_hello-world.md',\n" +
+            "    'views': 0\n" +
+            "  },\n" +
+            "  {\n" +
+            "    'fileName': '2008-06-26_09-20-00_Some-title.md',\n" +
+            "    'views': 3\n" +
+            "  },\n" +
+            "  {\n" +
+            "    'fileName': '2008-07-15_20-03-00_Untitled.md',\n" +
+            "    'views': 0\n" +
+            "  }\n" +
+            "]";
+
+    public static final String SAMPLE_NO_VISITS =
+            "[\n" +
+            "  {\n" +
+            "    'fileName': '2008-06-25_15-30-00_hello-world.md',\n" +
+            "    'views': 0\n" +
+            "  },\n" +
+            "  {\n" +
+            "    'fileName': '2008-06-26_09-20-00_Some-title.md',\n" +
+            "    'views': 0\n" +
+            "  },\n" +
+            "  {\n" +
+            "    'fileName': '2008-07-15_20-03-00_Untitled.md',\n" +
+            "    'views': 0\n" +
+            "  }\n" +
+            "]";
 }

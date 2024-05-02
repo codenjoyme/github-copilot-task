@@ -1,10 +1,8 @@
 package com.codenjoy.blog.facade;
 
 import com.codenjoy.blog.dto.PageDTO;
-import com.codenjoy.blog.service.FileService;
-import com.codenjoy.blog.service.MarkdownService;
-import com.codenjoy.blog.service.PageService;
-import com.codenjoy.blog.service.SecretService;
+import com.codenjoy.blog.dto.PageVisitDTO;
+import com.codenjoy.blog.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -24,8 +22,10 @@ public class PageFacade {
     private final SecretService secret;
     private final FileService files;
     private final PageService pages;
+    private final VisitService visits;
 
     public String content(String fileName) {
+        visits.visit(fileName);
         return markdown.load(directory + "/" + fileName);
     }
 
@@ -37,5 +37,9 @@ public class PageFacade {
 
     public List<String> tags() {
         return pages.tags(directory);
+    }
+
+    public List<PageVisitDTO> visits() {
+        return visits.visits(directory);
     }
 }
